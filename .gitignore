@@ -1,0 +1,22 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Notebook checkpoints and editor files
+.ipynb_checkpoints/
+
+# Generated extraction, PCA, and plot files in outputs/.
+# Keep the annotated feature tables used as PCA inputs.
+outputs/*
+!outputs/input_pca/
+outputs/input_pca/*
+!outputs/input_pca/*_features.csv
+
+# Generated synthesis files
+grand_duc_synthetique.wav
+spectrogram_comparison.png
+
+# Operating system files
+.DS_Store

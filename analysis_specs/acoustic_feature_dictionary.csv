@@ -1,0 +1,75 @@
+variable_name,family,definition,unit,aggregation,interpretation,notes
+file_id,identifier,Unique filename or recording identifier,string,none,Identifier for source audio,Required to trace back to raw file
+vocalization_id,identifier,Unique ID for the vocalisation/string,none,none,Unit of analysis (1 row per vocalisation),Can encode file_id + onset
+individual_id,metadata,Individual identifier (ring/tag/field ID),string,none,Biological grouping,Essential for supervised analysis
+site_id,metadata,Site/location identifier,string,none,Spatial grouping,Include coordinates if available
+date,metadata,Recording date,YYYY-MM-DD,date,none,Temporal metadata,Useful to control session effects
+time,metadata,Recording time,HH:MM:SS,time,none,Temporal metadata,
+replicate_id,metadata,Replicate or take number,string,none,Distinguish multiple takes,Optional
+quality_score,metadata,Quality score assigned to the vocalisation (e.g. 0-5),integer,none,Filter low-quality segments,Define threshold for valid vocalisations
+sampling_rate_hz,technical,Sampling rate of the recording,hz,none,Technical metadata,Affects spectral measures
+duration_s,temporal,Duration of the vocalisation,seconds,none,Length of the signal,Exclude extremely short events
+onset_time_s,temporal,Onset time within file,seconds,none,Position in file,Useful to locate segment
+offset_time_s,temporal,Offset time within file,seconds,none,Position in file,
+f_min_hz,frequency,Minimum detected frequency within vocalisation,hz,none,Lower spectral bound,Define detection threshold method
+f_max_hz,frequency,Maximum detected frequency within vocalisation,hz,none,Upper spectral bound,Define detection threshold method
+f_peak_hz,frequency,Frequency of peak spectral energy,hz,none,Most energetic frequency,Computed from short-time spectra
+bandwidth_hz,frequency,Bandwidth: f_max_hz - f_min_hz,hz,none,Spectral width,Simple measure of frequency spread
+spectral_centroid_hz,spectral,Spectral centroid (center of mass of spectrum),hz,none,Perceived brightness,Compute from power spectrum
+spectral_spread_hz,spectral,Spectral spread (std of spectral distribution),hz,none,Dispersion of spectral energy,
+spectral_entropy,spectral,Spectral entropy (Shannon) of normalized spectrum,bit,none,Complexity/tonality vs noise,Lower = tonal; higher = noise-like
+q25_freq_hz,spectral,25th percentile frequency of spectral energy,hz,none,Lower spectral quartile,
+q50_freq_hz,spectral,Median frequency of spectral energy,hz,none,Median spectral frequency,
+q75_freq_hz,spectral,75th percentile frequency of spectral energy,hz,none,Upper spectral quartile,
+rms_mean,energy,Root-mean-square energy (mean over frames),amplitude units,mean,Average signal energy,Sensitive to distance and gain
+rms_sd,energy,Root-mean-square energy (std over frames),amplitude units,sd,Energy variability within vocalisation,
+rms_min,energy,Minimum RMS across frames,amplitude units,min,Energy troughs,
+rms_max,energy,Maximum RMS across frames,amplitude units,max,Energy peaks,
+snr_db,energy,Estimated signal-to-noise ratio in dB,db,none,Relative signal strength,Requires explicit noise estimation method
+zcr_mean,temporal,Zero Crossing Rate mean (per frame),counts/sec,mean,High for noisy or high-frequency signals,Frame-level ZCR averaged over vocalisation
+zcr_sd,temporal,Zero Crossing Rate standard deviation,counts/sec,sd,Variability of ZCR,
+zcr_min,temporal,Minimum ZCR across frames,counts/sec,min,Low values indicate tonal frames,
+zcr_max,temporal,Maximum ZCR across frames,counts/sec,max,Indicates intermittent high-frequency/noise frames
+f0_mean_hz,pitch,Estimated fundamental frequency mean,hz,mean,Average pitch,Choose algorithm robust to harmonics
+f0_sd_hz,pitch,Estimated fundamental frequency std,hz,sd,Pitch variability within vocalisation,
+f0_min_hz,pitch,Minimum estimated F0,hz,min,Pitch lower bound,
+f0_max_hz,pitch,Maximum estimated F0,hz,max,Pitch upper bound,
+freq_slope_hz_s,modulation,Global linear frequency slope across vocalisation,hz/s,none,Tendency to ascend/descend,Estimate from linear fit to frequency contour
+fm_rate,modulation,Frequency modulation rate (cycles/sec),hz,none,Modulation speed,Requires FM detection method
+fm_extent_hz,modulation,Frequency modulation extent (peak-to-peak),hz,none,Modulation amplitude,
+am_rate,modulation,Amplitude modulation rate (cycles/sec),hz,none,AM speed,
+am_extent,modulation,Amplitude modulation extent (peak-to-peak),relative units,none,AM amplitude,
+spectral_skewness,spectral,Skewness of spectral distribution,unitless,none,Asymmetry of spectrum,
+spectral_kurtosis,spectral,Kurtosis of spectral distribution,unitless,none,Peakedness of spectrum,
+rolloff_85_hz,spectral,Frequency below which 85% of spectral energy is contained,hz,none,Spectral roll-off,
+rolloff_95_hz,spectral,Frequency below which 95% of spectral energy is contained,hz,none,Spectral roll-off (high end),
+mfcc_1_mean,mfcc,MFCC #1 mean (over frames),dimensionless,mean,First cepstral coefficient (low-order spectral shape),Use 13 coefficients by default
+mfcc_2_mean,mfcc,MFCC #2 mean,dimensionless,mean,MFCC 2,
+mfcc_3_mean,mfcc,MFCC #3 mean,dimensionless,mean,MFCC 3,
+mfcc_4_mean,mfcc,MFCC #4 mean,dimensionless,mean,MFCC 4,
+mfcc_5_mean,mfcc,MFCC #5 mean,dimensionless,mean,MFCC 5,
+mfcc_6_mean,mfcc,MFCC #6 mean,dimensionless,mean,MFCC 6,
+mfcc_7_mean,mfcc,MFCC #7 mean,dimensionless,mean,MFCC 7,
+mfcc_8_mean,mfcc,MFCC #8 mean,dimensionless,mean,MFCC 8,
+mfcc_9_mean,mfcc,MFCC #9 mean,dimensionless,mean,MFCC 9,
+mfcc_10_mean,mfcc,MFCC #10 mean,dimensionless,mean,MFCC 10,
+mfcc_11_mean,mfcc,MFCC #11 mean,dimensionless,mean,MFCC 11,
+mfcc_12_mean,mfcc,MFCC #12 mean,dimensionless,mean,MFCC 12,
+mfcc_13_mean,mfcc,MFCC #13 mean,dimensionless,mean,MFCC 13,
+mfcc_1_sd,mfcc,MFCC #1 standard deviation,dimensionless,sd,Variability of MFCC 1 across frames,
+mfcc_2_sd,mfcc,MFCC #2 standard deviation,dimensionless,sd,Variability of MFCC 2 across frames,
+mfcc_3_sd,mfcc,MFCC #3 standard deviation,dimensionless,sd,Variability of MFCC 3 across frames,
+mfcc_4_sd,mfcc,MFCC #4 standard deviation,dimensionless,sd,Variability of MFCC 4 across frames,
+mfcc_5_sd,mfcc,MFCC #5 standard deviation,dimensionless,sd,Variability of MFCC 5 across frames,
+mfcc_6_sd,mfcc,MFCC #6 standard deviation,dimensionless,sd,Variability of MFCC 6 across frames,
+mfcc_7_sd,mfcc,MFCC #7 standard deviation,dimensionless,sd,Variability of MFCC 7 across frames,
+mfcc_8_sd,mfcc,MFCC #8 standard deviation,dimensionless,sd,Variability of MFCC 8 across frames,
+mfcc_9_sd,mfcc,MFCC #9 standard deviation,dimensionless,sd,Variability of MFCC 9 across frames,
+mfcc_10_sd,mfcc,MFCC #10 standard deviation,dimensionless,sd,Variability of MFCC 10 across frames,
+mfcc_11_sd,mfcc,MFCC #11 standard deviation,dimensionless,sd,Variability of MFCC 11 across frames,
+mfcc_12_sd,mfcc,MFCC #12 standard deviation,dimensionless,sd,Variability of MFCC 12 across frames,
+mfcc_13_sd,mfcc,MFCC #13 standard deviation,dimensionless,sd,Variability of MFCC 13 across frames,
+harmonic_to_noise_ratio,harmonic,Harmonic-to-noise ratio,db,none,Signal periodicity vs noise,Optional advanced feature
+jitter,harmonic,Period-to-period frequency perturbation,relative,none,Voice stability measure,Optional
+shimmer,harmonic,Amplitude perturbation between cycles,relative,none,Voice amplitude stability,Optional
+notes,metadata,Free-text notes about segment,string,none,Manual observations,Optional
