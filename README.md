@@ -7,8 +7,6 @@ This project extracts acoustic descriptors from manually annotated male territor
 
 All data come from recordings and field observations made by the author.
 
-# ...existing code...
-
 ## Analysis principles
 
 - An expert defines the start and end of each vocalisation.
